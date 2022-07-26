@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/kimwang0906/Desktop/P.Files/xv6/xv6-riscv'
+ 
+make: 'kernel/kernel' is up to date.
+make: Leaving directory '/home/kimwang0906/Desktop/P.Files/xv6/xv6-riscv'
+ 
