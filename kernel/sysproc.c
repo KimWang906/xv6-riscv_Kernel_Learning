@@ -28,9 +28,9 @@ sys_setpgid(int pid, int pgid)
 {
   if(pid == 0) 
   {
-    // pid가 0이면 Call의 Process Group ID를 변경해야 합니다
-    // 조건 : pgid 값이 음수가 될 수는 없다.
-    myproc()-> pgid = pid;
+    // pid가 0이면 Call의 Process Group ID를 pgid로 변경해야 합니다
+    // 조건 : pgid 값이 음수가 될 수는 없습니다.
+    myproc()-> pgid = pgid;
     return 0;
   }else return -1;
 
@@ -46,7 +46,7 @@ sys_getpgid(int pid)
 {
   // myproc()함수를 이용(->)하여 proc 구조체에 접근합니다.
   if(pid == 0) return myproc()-> pgid;
-  else return;
+  else return -1;
 }
 
 uint64

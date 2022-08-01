@@ -650,7 +650,7 @@ procdump(void)
       state = states[p->state];
     else
       state = "???";
-    printf("%d %s %s", p->pid, state, p->name);
+    printf("%d %d %s %s", p->pid, p->pgid, state, p->name); // pgid를 출력할 수 있게 struct proc에서 *p로 pgid를 가리킵니다.(2022 / 8 / 1)
     printf("\n");
   }
 }

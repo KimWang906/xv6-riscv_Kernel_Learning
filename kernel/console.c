@@ -139,7 +139,7 @@ consoleintr(int c)
 
   switch(c){
   case C('P'):  // Print process list.
-    procdump();
+    procdump(); // 해당 함수에 pgid를 출력할 수 있게 추가합니다(8 / 1)
     break;
   case C('U'):  // Kill line.
     while(cons.e != cons.w &&
