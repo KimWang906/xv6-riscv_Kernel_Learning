@@ -13,7 +13,7 @@
 
     int setpgid(int pid, int pgid);
 
-* **setpgid**는 **pid**로 지정된 프로세스의 프로세스 그룹 ID를 pgid로 변경해야 합니다.
+* **setpgid**는 **pid**로 지정된 Process의 Process Group ID를 pgid로 변경해야 합니다.
 * **pid** 및 **pgid**는 음이 아닌 정수입니다.
 * **pid**가 0이면 Call의 Process Group ID를 변경해야 합니다.
   * Process(System Call을 호출한 Process)
