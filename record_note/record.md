@@ -1,54 +1,36 @@
 # Code
 
-<ul>
-    <li>defs.h • 함수 정의용</li>
-    <li>proc.h, proc.c • 프로세스 관련 기능용</li>
-    <li>console.c • 콘솔 입력 처리용</li>
-    <li>syscall.c, sysprosc.c • 시스템 호출 구현용</li>
-</ul>
+* **defs.h** • Function 정의용
+* **proc.h**, **proc.c** • Process 관련 기능용
+* **console.c** • Console 입력 처리용
+* **syscall.c**, **sysprosc.c** • System Call 구현용
 
-## Spinlock
+## Day 1 homeworks
 
-스핀락(spinlock)은 임계 구역(critical section)에 진입이 불가능할 때 진입이 가능할 때까지 루프를 돌면서 재시도하는 방식으로 구현된 락을 가리킵니다.</br>
-스핀락이라는 이름은 락을 획득할 때까지 해당 스레드가 빙빙 돌고 있다(spinning)는 것을 의미합니다.</br>
-스핀락은 바쁜 대기의 한 종류이다.</br>
-</br>
-스핀락은 운영 체제의 스케줄링 지원을 받지 않기 때문에, 해당 스레드에 대한 문맥 교환이 일어나지 않습니다.</br>
-따라서 스핀락은 임계 구역에 짧은 시간 안에 진입할 수 있는 경우에 문맥 교환을 제거할 수 있어 효율적입니다.</br>
-하지만 만약 스핀락이 오랜 시간을 소요한다면 다른 스레드를 실행하지 못하고 대기하게 되며, 이 경우 비효율적인 결과를 가져옵니다.</br>
+### 함수 정의
 
-다음은 **스핀락을 구현하기 위해 x86 어셈블리어를 사용한 예제이고, 인텔 80386 호환 프로세서일 경우 실제로 동작합니다.**
+#### setpgid
 
-    ; Intel syntax
+    int setpgid(int pid, int pgid);
 
-    locked:                      ; The lock variable. 1 = locked, 0 = unlocked.
-        dd      0
+* **setpgid**는 **pid**로 지정된 프로세스의 프로세스 그룹 ID를 pgid로 변경해야 합니다.
+* **pid** 및 **pgid**는 음이 아닌 정수입니다.
+* **pid**가 0이면 Call의 Process Group ID를 변경해야 합니다.
+  * Process(System Call을 호출한 Process)
+* **pgid**가 0이면 Process Group ID를 **pid**와 동일하게 변경해야 합니다.
+* setpgid는 다음과 같은 값을 return 합니다.
+  * 변경에 성공할 시, 0을 **return**합니다.
+  * 변경에 실패할 시, -1을 **return**합니다.
 
-    spin_lock:
-        mov     eax, 1          ; Set the EAX register to 1.
+#### getpgid
 
-        xchg    eax, [locked]   ; Atomically swap the EAX register with
-                                ;  the lock variable.
-                                ; This will always store 1 to the lock, leaving
-                                ;  the previous value in the EAX register.
+    int getpgid(int pid);
 
-        test    eax, eax        ; Test EAX with itself. Among other things, this will
-                                ;  set the processor's Zero Flag if EAX is 0.
-                                ; If EAX is 0, then the lock was unlocked and
-                                ;  we just locked it.
-                                ; Otherwise, EAX is 1 and we didn't acquire the lock.
+* **getpgid**는 **pid**로 지정된 Process의 Process Group ID를 반환해야 합니다.
+* **pid**가 0이면 Return Process의 Process Group ID를 반환해야 합니다.
+* 성공 시, pgid return합니다.
+* 실패 시, return합니다.
 
-        jnz     spin_lock       ; Jump back to the MOV instruction if the Zero Flag is
-                                ;  not set; the lock was previously locked, and so
-                                ; we need to spin until it becomes unlocked.
+## 컴퓨터 용어 정리
 
-        ret                     ; The lock has been acquired, return to the calling
-                                ;  function.
-
-    spin_unlock:
-        mov     eax, 0          ; Set the EAX register to 0.
-
-        xchg    eax, [locked]   ; Atomically swap the EAX register with
-                                ;  the lock variable.
-
-        ret                     ; The lock has been released.
+[Spinlock](spinlock.md)
