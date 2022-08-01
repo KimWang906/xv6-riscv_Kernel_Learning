@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 29 20:59:36 2022
+# Make data base, printed on Mon Aug  1 17:14:35 2022
 
 # Variables
 
@@ -28,6 +28,8 @@ QEMUGDB = $(shell if $(QEMU) -help | grep -q '^-gdb'; then echo "-gdb tcp::$(GDB
 ULIB = $U/ulib.o $U/usys.o $U/printf.o $U/umalloc.o
 # environment
 GJS_DEBUG_OUTPUT = stderr
+# environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # makefile (from 'Makefile', line 150)
 GDBPORT = $(shell expr `id -u` % 5000 + 25000)
 # environment
@@ -36,6 +38,8 @@ LC_NAME = ko_KR.UTF-8
 LC_NUMERIC = ko_KR.UTF-8
 # environment
 VSCODE_CWD = /home/kimwang0906
+# environment
+WINDOWPATH = 2
 # environment
 LC_ADDRESS = ko_KR.UTF-8
 # default
@@ -55,7 +59,7 @@ PWD = /home/kimwang0906/Desktop/P.Files/xv6/xv6-riscv
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # automatic
@@ -65,7 +69,7 @@ VSCODE_CODE_CACHE_PATH = /home/kimwang0906/.config/Code/CachedData/3b889b090b5ad
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.HGU5P1
+XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .LOADED := 
 # default
@@ -87,8 +91,6 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # default
 .SHELLFLAGS := -c
 # environment
-WAYLAND_DISPLAY = wayland-0
-# environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
@@ -99,13 +101,13 @@ MAKEFILE_LIST := Makefile kernel/bio.d kernel/console.d kernel/exec.d kernel/fil
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 2628
+VSCODE_PID = 5350
 # environment
-XDG_SESSION_TYPE = wayland
+XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/1854,unix/KimWang09:/tmp/.ICE-unix/1854
+SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/2623,unix/KimWang09:/tmp/.ICE-unix/2623
 # automatic
 *F = $(notdir $*)
 # environment
@@ -138,8 +140,6 @@ GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 SHLVL = 0
 # environment
 MAKELEVEL := 0
-# environment
-IM_CONFIG_CHECK_ENV = 1
 # makefile (from 'Makefile', line 57)
 OBJDUMP = $(TOOLPREFIX)objdump
 # default
@@ -159,11 +159,9 @@ LC_MONETARY = ko_KR.UTF-8
 # environment
 LC_TIME = ko_KR.UTF-8
 # environment
-INVOCATION_ID = 10413a81f66248cda1d333bd0aa478f3
+INVOCATION_ID = ce335f4b658f414da67ea115123bba7b
 # environment
 USERNAME = kimwang0906
-# environment
-GNOME_SETUP_DISPLAY = :1
 # environment
 LC_TELEPHONE = ko_KR.UTF-8
 # environment
@@ -193,15 +191,17 @@ PLATFORMIO_PATH = /home/kimwang0906/.platformio/python3/bin:/home/kimwang0906/.c
 # makefile
 .DEFAULT_GOAL := kernel/kernel
 # environment
-SYSTEMD_EXEC_PID = 1887
+SYSTEMD_EXEC_PID = 2682
 # makefile (from 'Makefile', line 51)
 QEMU = qemu-system-riscv64
 # environment
-DISPLAY = :0
+DISPLAY = :1
 # environment
 USER = kimwang0906
 # environment
 GTK_MODULES = gail:atk-bridge
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKE_VERSION := 4.3
 # 'override' directive
@@ -209,11 +209,11 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 74)
 LDFLAGS = -z max-page-size=4096
 # environment
-MANAGERPID = 1683
+MANAGERPID = 2268
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2628
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5350
 # environment
 _ = /usr/share/code/code
 # environment
@@ -223,7 +223,9 @@ XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 68)
 CFLAGS = -Wall -Werror -O -fno-omit-frame-pointer -ggdb -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. $(shell $(CC) -fno-stack-protector -E -x c /dev/null >/dev/null 2>&1 && echo -fno-stack-protector) -fno-pie -no-pie
 # environment
-JOURNAL_STREAM = 8:37065
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+JOURNAL_STREAM = 8:59454
 # makefile (from 'Makefile', line 156)
 CPUS := 3
 # environment
@@ -269,7 +271,7 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = ko_KR.UTF-8
 # variable set hash-table stats:
-# Load=128/1024=12%, Rehash=0, Collisions=5/377=1%
+# Load=129/1024=13%, Rehash=0, Collisions=6/378=2%
 
 # Pattern-specific Variable Values
 
@@ -277,9 +279,9 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 
 # Directories
 
-# kernel (device 2049, inode 40371865): 101 files, no impossibilities.
-# . (device 2049, inode 38145921): 18 files, no impossibilities.
-# user (device 2049, inode 40371921): 117 files, no impossibilities.
+# kernel (device 2081, inode 40371865): 101 files, no impossibilities.
+# . (device 2081, inode 38145921): 18 files, no impossibilities.
+# user (device 2081, inode 40371921): 117 files, no impossibilities.
 
 # 236 files, no impossibilities in 3 directories.
 
@@ -292,6 +294,7 @@ _%: %.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
 	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
 
 # 1 implicit rules, 0 (0.0%) terminal.
+ 
 # Files
 
 user/cat.o: user/cat.c kernel/types.h kernel/stat.h user/user.h
@@ -335,7 +338,6 @@ user/sh.c:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 kernel/proc.c:
 #  Implicit rule search has not been done.
@@ -592,6 +594,7 @@ Makefile:
 
 kernel/vm.o: kernel/vm.c kernel/param.h kernel/types.h kernel/memlayout.h kernel/elf.h kernel/riscv.h kernel/defs.h kernel/fs.h
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -806,7 +809,6 @@ kernel/sysfile.c:
 # Not a target:
 kernel/string.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-07-26 15:28:12.916106037
 #  File has been updated.
 #  Successfully updated.
@@ -823,6 +825,7 @@ user/init.c:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 kernel/plic.o: kernel/plic.c kernel/types.h kernel/param.h kernel/memlayout.h kernel/riscv.h kernel/defs.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -975,6 +978,7 @@ user/cat.d:
 user/forktest.o: user/forktest.c kernel/types.h kernel/stat.h user/user.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -1120,6 +1124,7 @@ user/mkdir.o: user/mkdir.c kernel/types.h kernel/stat.h user/user.h
 kernel/string.o: kernel/string.c kernel/types.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -1228,7 +1233,6 @@ user/_sh:
 kernel/syscall.d:
 #  Implicit rule search has been done.
 #  Last modified 2022-07-28 20:10:04.839638158
- 
 #  File has been updated.
 #  Successfully updated.
 
@@ -1244,6 +1248,7 @@ kernel/kernel: kernel/entry.o kernel/start.o kernel/console.o kernel/printf.o ke
 user/umalloc.o: user/umalloc.c kernel/types.h kernel/stat.h user/user.h kernel/param.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 qemu-gdb: kernel/kernel .gdbinit fs.img
@@ -1366,6 +1371,7 @@ kernel/sleeplock.c:
 # Not a target:
 user/mkdir.d:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-07-26 15:28:14.024100998
 #  File has been updated.
 #  Successfully updated.
@@ -1486,6 +1492,6 @@ kernel/file.o: kernel/file.c kernel/types.h kernel/riscv.h kernel/defs.h kernel/
 # strcache performance: lookups = 852 / hit rate = 50%
 # hash-table stats:
 # Load=418/8192=5%, Rehash=0, Collisions=23/852=3%
-# Finished Make data base on Fri Jul 29 20:59:36 2022
+# Finished Make data base on Mon Aug  1 17:14:35 2022
 
  

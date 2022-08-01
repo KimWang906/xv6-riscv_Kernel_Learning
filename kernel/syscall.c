@@ -104,7 +104,8 @@ extern uint64 sys_unlink(void);
 extern uint64 sys_wait(void);
 extern uint64 sys_write(void);
 extern uint64 sys_uptime(void);
-extern uint64 sys_test(void);  // new
+extern uint64 sys_setpgid(void);  // new
+extern uint64 sys_getpgid(void); // new
 
 static uint64 (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -128,7 +129,8 @@ static uint64 (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
-[SYS_test]    sys_test, //new
+[SYS_setpgid] sys_setpgid,
+[SYS_getpgid] sys_getpgid,
 };
 
 void
