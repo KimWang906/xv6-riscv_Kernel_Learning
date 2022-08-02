@@ -31,6 +31,7 @@ sys_setpgid(int pid, int pgid)
     // pid가 0이면 Call의 Process Group ID를 pgid로 변경해야 합니다
     // 조건 : pgid 값이 음수가 될 수는 없습니다.
     myproc()-> pgid = pgid;
+    
     return 0;
   }else return -1;
 
@@ -121,4 +122,3 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
-
