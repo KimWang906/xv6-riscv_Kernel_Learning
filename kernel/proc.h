@@ -1,4 +1,6 @@
 // Saved registers for kernel context switches.
+// 프로세스를 중단하고 이후에 재개하기 위해
+// xv6가 저장하고 복원하는 레지스터
 struct context {
   uint64 ra;
   uint64 sp;
@@ -80,30 +82,43 @@ struct trapframe {
   /* 280 */ uint64 t6;
 };
 
+// 가능한 프로세스 상태
+/*
+    아래 코드에서 실행, 준비, 대기 외에 다른 상태들이 존재하는 것을 볼 수 있는데, 
+    초기(initial) 상태(프로세스가 생성되는 동안에는 초기 상태에 머무는 것)를 가지는 시스템도 있습니다.  
+    프로세스는 종료되었지만 메모리에 남아있는 상태인 최종(inal)상태도 있습니다.
+    (Unix-기반 시스템에서 이 상태는 좀비(zombie) 상태라고 불립니다)  
+    이 상태는 프로세스가 성공적으로 실행했는지를 다른 프로세스(보통은 부모(parent)프로세스)가 검사하는 데 유용합니다.  
+    이를 위하여 최종 상태를 활용합니다. (Unix-기반 시스템에서는 프로세스가 성공적으로 종료되었으면 0을, 그렇지 않으면 0이 아닌 값을 반환합니다)  
+    부모 프로세스는 자식 프로세스의 종료를 대기하는 시스템 콜을 호출(예, wait())하고, 
+    해당 호출은 종료된 프로세스와 관련된 자원들을 정리할 수 있다고 운영체제에 알리는 역할도 합니다.
+*/
 enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 // Per-process state
 // process function
+// 레지스터 문맥과 상태를 포함하여
+// 각 프로세스에 대하여 xv6가 추적하는 정보
 struct proc {
   struct spinlock lock;
 
   // p->lock must be held when using these:
-  enum procstate state;        // Process state
+  enum procstate state;        // Process state(프로세스의 상태)
   void *chan;                  // If non-zero, sleeping on chan
   int killed;                  // If non-zero, have been killed
   int xstate;                  // Exit status to be returned to parent's wait
   int pid;                    // Process ID
   int pgid;                   // Process Group ID(8 / 1 Update)
   // wait_lock must be held when using this:
-  struct proc *parent;         // Parent process
+  struct proc *parent;         // Parent process(부모 프로세스)
 
   // these are private to the process, so p->lock need not be held.
-  uint64 kstack;               // Virtual address of kernel stack
-  uint64 sz;                   // Size of process memory (bytes)
+  uint64 kstack;               // Virtual address of kernel stack(이 프로세스의 커널 스택의 바닥주소)
+  uint64 sz;                   // Size of process memory (bytes)(프로세스 메모리의 크기)
   pagetable_t pagetable;       // User page table
   struct trapframe *trapframe; // data page for trampoline.S
   struct context context;      // swtch() here to run process
   struct file *ofile[NOFILE];  // Open files
-  struct inode *cwd;           // Current directory
+  struct inode *cwd;           // Current directory(현재 디렉터리)
   char name[16];               // Process name (debugging)
 };
