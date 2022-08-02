@@ -32,6 +32,6 @@
   * 성공할 시, **pgid**를 **return**합니다.
   * 실패할 시, **return**합니다.
 
-## 컴퓨터 용어 정리
+## OSTEP 정리 노트
 
-[Spinlock](spinlock.md)
+### [Process](process.md)
