@@ -103,6 +103,7 @@ struct proc {
   struct spinlock lock;
 
   // p->lock must be held when using these:
+  // 이것을 사용할 때 p->lock을 사용해야합니다.
   enum procstate state;        // Process state(프로세스의 상태)
   void *chan;                  // If non-zero, sleeping on chan
   int killed;                  // If non-zero, have been killed

@@ -26,26 +26,28 @@ sys_getpid(void)
 uint64
 sys_setpgid(int pid, int pgid)
 {
-  if(pid == 0) 
-  {
-    // pid가 0이면 Call의 Process Group ID를 pgid로 변경해야 합니다
-    // 조건 : pgid 값이 음수가 될 수는 없습니다.
-    myproc()-> pgid = pgid;
-    
-    return 0;
-  }else return -1;
+  struct proc *p = 0;
 
-  if(pgid == 0)
+  if(pid == 0)
+  {
+    acquire(&p->lock); // lock을 취득합니다.
+    // Critical section
+    // System Call을 호출한 process group id를 변경합니다.
+    pgid = myproc()-> pgid;
+    release(&p->lock);
+    return pgid;
+
+  }else if(pgid == 0) 
   {
     pgid = pid;
     return 0;
+
   }else return -1;
 }
 
 uint64
 sys_getpgid(int pid)
-{
-  // myproc()함수를 이용(->)하여 proc 구조체에 접근합니다.
+{ 
   if(pid == 0) return myproc()-> pgid;
   else return -1;
 }
