@@ -30,7 +30,7 @@
 * **pid**가 0이면 Return Process의 Process Group ID를 **return**해야 합니다.
 * **getpgid**은 다음과 같은 값을 **return** 합니다.
   * 성공할 시, **pgid**를 **return**합니다.
-  * 실패할 시, **return**합니다.
+  * 실패할 시, -1을 **return**합니다.
 
 ## OSTEP 정리 노트
 

@@ -48,8 +48,13 @@ sys_setpgid(int pid, int pgid)
 uint64
 sys_getpgid(int pid)
 { 
-  if(pid == 0) return myproc()-> pgid;
-  else return -1;
+  struct proc *p = 0;
+  if(pid == 0) {
+    acquire(&p->lock); // lock을 호출한 process group id를 변경
+    // Critical section
+
+    release(&p->lock);
+  }else return -1;
 }
 
 uint64
