@@ -211,7 +211,7 @@ main(int argc, char *argv[])
 {
   printf("hello world (pid:%d)\n ", (int) getpid());
 
-  int rc = **fork()**;
+  int rc = fork();
 
   if (rc < 0) { // fork failed; exit
     fprintf(stderr, "fork failed\n ");
@@ -247,9 +247,9 @@ main(int argc, char *argv[])
 이 메시지에는 **PID**로도 알려진 프로세스 **식별자(process identiier)** 가 포함됩니다.  
 이 프로세스는 46316이라는 **PID**를 가집니다.  
 Unix 시스템에서 **PID**는 프로세스의 실행이나 중단과 같이 특정 프로세스를 대상으로 작업을 해야 할 경우 프로세스를 지칭하기 위해 사용됩니다.  
-
-하지만 재미있는 부분은 여기서부터 시작되는데요,
-
+  
+하지만 재미있는 부분은 여기서부터 시작되는데요,  
+  
 프로세스는 **fork()** System Call을 호출하고, 운영체제는 프로세스 생성을 위해 이 System Call을 제공합니다.  
 그러나 어딘가 이상한 부분이 있습니다. 바로 생성된 프로세스가 호출한 프로세스의 복사본이라는 것입니다.  
 **fork()** 호출 직후를 살펴보겠습니다.  

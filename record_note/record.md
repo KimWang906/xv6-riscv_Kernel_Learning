@@ -3,7 +3,7 @@
 * **defs.h** • Function 정의용
 * **proc.h**, **proc.c** • Process 관련 기능용
 * **console.c** • Console 입력 처리용
-* **syscall.c**, **sysprosc.c** • System Call 구현용
+* **syscall.c**, **sysproc.c** • System Call 구현용
 
 ## Day 1 homeworks
 

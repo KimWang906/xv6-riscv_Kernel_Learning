@@ -24,40 +24,6 @@ sys_getpid(void)
 }
 
 uint64
-sys_setpgid(int pid, int pgid)
-{
-  struct proc *p = 0;
-
-  if(pid == 0)
-  {
-    acquire(&p->lock); // lock을 취득합니다.
-    // Critical section
-    // System Call을 호출한 process group id를 변경합니다.
-    pgid = myproc()-> pgid;
-    release(&p->lock);
-    return pgid;
-
-  }else if(pgid == 0) 
-  {
-    pgid = pid;
-    return 0;
-
-  }else return -1;
-}
-
-uint64
-sys_getpgid(int pid)
-{ 
-  struct proc *p = 0;
-  if(pid == 0) {
-    acquire(&p->lock); // lock을 호출한 process group id를 변경
-    // Critical section
-
-    release(&p->lock);
-  }else return -1;
-}
-
-uint64
 sys_fork(int pid)
 {
   return fork();
@@ -129,3 +95,52 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// struct proc *p; // proc 구조체에 접근하여 spinlock을 사용하기 위한 구조체 포인터 p
+
+// uint64
+// sys_setpgid(int pid, int pgid) // 해당 함수는 pgid 값을 변경하는 함수입니다.
+// {
+
+//   if(pid != pgid)
+//   {
+
+//   }
+
+//   if(pid == 0) // 자식 프로세스일 경우
+//   {
+//     acquire(&p->lock); // lock을 획득합니다.
+//     // Critical section
+//     myproc()-> pgid = pgid; // System Call을 호출한 process group id를 변경합니다.
+//     release(&p->lock); // lock을 반환합니다.
+//     return 0; // 변경에 성공할 경우, 0을 return 합니다.
+
+//   }else if(pgid == 0) //
+//   {
+//     acquire(&p->lock); // lock을 획득합니다.
+//     pgid = pid; // Process group id를 pid와 동일하게 변경합니다.
+//     release(&p->lock); // lock을 반환합니다.
+//     return 0; // 변경에 성공할 경우, 0을 반환합니다.
+//   }else if(pid == pgid)
+//   {
+//     acquire(&p->lock); // locked
+
+//   }
+  
+  
+//   return -1; // 변경에 실패했을 경우, -1을 반환합니다.
+// }
+
+// uint64
+// sys_getpgid(int pid) // 해당 함수는 pgid를 반환하는 함수입니다.
+// { 
+//   uint pgid; // pgid를 return 할 때 필요한 변수 pgid
+//   if(pid == 0) // 자식 프로세스일 경우
+//   {
+//     acquire(&p->lock); // lock을 획득합니다.
+//     pgid = myproc()-> pgid; // 현재 Process의 pgid를 받아옵니다.
+//     release(&p->lock); // lock을 반환합니다.
+//     return pgid; // 현재 Process의 group id를 반환합니다.
+
+//   }else return -1; // 변경에 실패했을 경우, -1을 반환합니다.
+// }

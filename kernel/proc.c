@@ -54,6 +54,8 @@ procinit(void)
       initlock(&p->lock, "proc");
       p->kstack = KSTACK((int) (p - proc));
   }
+
+  // 프로세스 맨 처음 만들때에도 올바른 pgid를 갖도록 초기화해줘야합니다.
 }
 
 // Must be called with interrupts disabled,
