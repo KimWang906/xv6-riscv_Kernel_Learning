@@ -632,7 +632,7 @@ either_copyin(void *dst, int user_src, uint64 src, uint64 len)
 // Runs when user types ^P on console.
 // No lock to avoid wedging a stuck machine further.
 void
-procdump(void)
+procdump(void) // clear 함수를 만들기 위해 수정해야할 함수
 {
   static char *states[] = {
   [UNUSED]    "unused",

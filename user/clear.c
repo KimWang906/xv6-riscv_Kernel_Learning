@@ -1,5 +1,20 @@
-#include "kernel/defs.h"
+#include "kernel/types.h"
+#include "kernel/stat.h"
+#include "user/user.h"
 
-void clear() {
-  printf("Hello world!\n");
+// 출력 전, 명령어들을 전부 저장하고 
+void
+clear(void) {
+  printf("Test command\n");
+}
+
+
+// argc = arguments count로 main 함수에 전달된 인자의 개수를 의미하며, 
+// argv = arguments vector로서 가변적인 개수의 문자열이다.
+
+int
+main(int argc, char *argv[])
+{
+    clear();
+    exit(0);
 }

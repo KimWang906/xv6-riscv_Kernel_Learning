@@ -76,6 +76,11 @@ consolewrite(int user_src, uint64 src, int n)
 // user_dist indicates whether dst is a user
 // or kernel address.
 //
+//
+// 콘솔에서 사용자 판독값을 여기로 이동합니다.
+// 입력 행을 전부 dst에 복사합니다.
+// user_dist는 dst가 사용자 주소인지 커널 주소인지를 나타냅니다.
+//
 int
 consoleread(int user_dst, uint64 dst, int n)
 {
@@ -190,3 +195,4 @@ consoleinit(void)
   devsw[CONSOLE].read = consoleread;
   devsw[CONSOLE].write = consolewrite;
 }
+ 

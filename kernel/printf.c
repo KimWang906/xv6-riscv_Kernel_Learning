@@ -61,8 +61,8 @@ printptr(uint64 x)
 
 // Print to the console. only understands %d, %x, %p, %s.
 void
-printf(char *fmt, ...)
-{
+printf(char *fmt, ...) 
+{ // clear 함수를 만들기 위해 수정해야할 함수(명령어 저장 -> 필요 시 데이터 삭제)
   va_list ap;
   int i, c, locking;
   char *s;
