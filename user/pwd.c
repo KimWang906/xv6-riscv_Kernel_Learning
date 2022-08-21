@@ -78,8 +78,8 @@ main(int argc, char *argv[])
 
 void
 pwd(void) {
-  struct proc *p; // proc 구조체에 접근하여 cwd를 사용하기 위한 구조체 포인터 p
-  printf("%s\n", p -> cwd);
+  // pwd() 함수가 작동하는 로직
+  // 디렉터리의 주소를 구한다
 }
 
 int main(int argc, char **argv) {
