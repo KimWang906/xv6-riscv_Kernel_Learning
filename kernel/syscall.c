@@ -106,6 +106,7 @@ extern uint64 sys_write(void);
 extern uint64 sys_uptime(void);
 extern uint64 sys_setpgid(void);  // new
 extern uint64 sys_getpgid(void); // new
+extern uint64 sys_getcwd(void); // need pwd.c
 
 static uint64 (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -129,6 +130,7 @@ static uint64 (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+[SYS_getcwd]  sys_getcwd,
 // [SYS_setpgid] sys_setpgid,
 // [SYS_getpgid] sys_getpgid,
 };

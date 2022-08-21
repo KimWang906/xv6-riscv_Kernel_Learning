@@ -8,7 +8,6 @@ clear(void) {
   printf("%c%c%c%c",0x1B,0x5B,0x32,0x4A);
 }
 
-
 // argc = arguments count로 main 함수에 전달된 인자의 개수를 의미하며, 
 // argv = arguments vector로서 가변적인 개수의 문자열이다.
 

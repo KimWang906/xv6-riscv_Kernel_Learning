@@ -96,6 +96,17 @@ sys_uptime(void)
   return xticks;
 }
 
+int sys_getcwd(void) {
+    char *p;
+    int n;
+    struct proc *curproc = myproc();
+
+    if(argint(1, &n) < 0 || argptr(0, &p, n) < 0)
+       return -1;
+
+    return name_for_inode(p, n, curproc->cwd);
+}
+
 // struct proc *p; // proc 구조체에 접근하여 spinlock을 사용하기 위한 구조체 포인터 p
 
 // uint64

@@ -22,3 +22,4 @@
 #define SYS_close  21
 #define SYS_setpgid 22 // new
 #define SYS_getpgid 23 // new
+#define SYS_getcwd 24
