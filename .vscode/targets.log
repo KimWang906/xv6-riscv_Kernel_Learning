@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 22 22:20:48 2022
+# Make data base, printed on Mon Aug 22 23:35:29 2022
 
 # Variables
 
@@ -67,7 +67,7 @@ VSCODE_CODE_CACHE_PATH = /home/kimwang0906/.config/Code/CachedData/e4503b30fc782
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.G1VNR1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.9FP6Q1
 # default
 .LOADED := 
 # default
@@ -101,13 +101,13 @@ MAKEFILE_LIST := Makefile kernel/bio.d kernel/console.d kernel/exec.d kernel/fil
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 5240
+VSCODE_PID = 3655
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/2907,unix/KimWang09:/tmp/.ICE-unix/2907
+SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/2816,unix/KimWang09:/tmp/.ICE-unix/2816
 # automatic
 *F = $(notdir $*)
 # environment
@@ -161,7 +161,7 @@ LC_MONETARY = ko_KR.UTF-8
 # environment
 LC_TIME = ko_KR.UTF-8
 # environment
-INVOCATION_ID = 7a51684d3e1c4351acf9407d8f153f13
+INVOCATION_ID = a08315f385344d0985d33e397d797d20
 # environment
 USERNAME = kimwang0906
 # environment
@@ -195,7 +195,7 @@ PLATFORMIO_PATH = /home/kimwang0906/.platformio/python3/bin:/home/kimwang0906/.c
 # makefile
 .DEFAULT_GOAL := kernel/kernel
 # environment
-SYSTEMD_EXEC_PID = 2925
+SYSTEMD_EXEC_PID = 2841
 # makefile (from 'Makefile', line 51)
 QEMU = qemu-system-riscv64
 # environment
@@ -211,11 +211,11 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 74)
 LDFLAGS = -z max-page-size=4096
 # environment
-MANAGERPID = 2758
+MANAGERPID = 2675
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5240
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3655
 # environment
 _ = /usr/share/code/code
 # environment
@@ -225,7 +225,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 68)
 CFLAGS = -Wall -Werror -O -fno-omit-frame-pointer -ggdb -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. $(shell $(CC) -fno-stack-protector -E -x c /dev/null >/dev/null 2>&1 && echo -fno-stack-protector) -fno-pie -no-pie
 # environment
-JOURNAL_STREAM = 8:37534
+JOURNAL_STREAM = 8:37065
 # makefile (from 'Makefile', line 158)
 CPUS := 3
 # environment
@@ -276,6 +276,7 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
+ 
 
 # Directories
 
@@ -297,7 +298,6 @@ _%: %.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
 # Files
 
 user/cat.o: user/cat.c kernel/types.h kernel/stat.h user/user.h
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -554,6 +554,7 @@ user/initcode: user/initcode.S
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 # Not a target:
 _init:
 #  Implicit rule search has not been done.
@@ -581,7 +582,7 @@ user/sh.o: user/sh.c kernel/types.h user/user.h kernel/fcntl.h
 # Not a target:
 user/ls.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-22 17:59:52.126312677
+#  Last modified 2022-08-22 22:21:06.555935645
 #  File has been updated.
 #  Successfully updated.
 
@@ -614,7 +615,6 @@ user/kill.d:
 # Not a target:
 kernel/log.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-15 23:56:21.153245749
 #  File has been updated.
 #  Successfully updated.
@@ -835,6 +835,7 @@ user/clear.c:
 kernel/types.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -914,7 +915,6 @@ kernel/kalloc.o: kernel/kalloc.c kernel/types.h kernel/param.h kernel/memlayout.
 # Not a target:
 user/usys.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-22 09:37:19.91777349
 #  File has been updated.
 #  Successfully updated.
@@ -1114,6 +1114,7 @@ kernel/buf.h:
 
 # Not a target:
 user/stressfs.c:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1203,7 +1204,6 @@ user/_wc:
 # Not a target:
 user/initcode.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-07-26 15:28:13.668102617
 #  File has been updated.
 #  Successfully updated.
@@ -1392,6 +1392,7 @@ user/_clear:
 
 # Not a target:
 user/_init:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1505,7 +1506,6 @@ user/zombie.o: user/zombie.c kernel/types.h kernel/stat.h user/user.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 kernel/file.o: kernel/file.c kernel/types.h kernel/riscv.h kernel/defs.h kernel/param.h kernel/fs.h kernel/spinlock.h kernel/sleeplock.h kernel/file.h kernel/stat.h kernel/proc.h
 #  Implicit rule search has not been done.
@@ -1526,6 +1526,6 @@ kernel/file.o: kernel/file.c kernel/types.h kernel/riscv.h kernel/defs.h kernel/
 # strcache performance: lookups = 884 / hit rate = 50%
 # hash-table stats:
 # Load=440/8192=5%, Rehash=0, Collisions=23/884=3%
-# Finished Make data base on Mon Aug 22 22:20:48 2022
+# Finished Make data base on Mon Aug 22 23:35:29 2022
 
  
