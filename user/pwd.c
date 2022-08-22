@@ -68,18 +68,27 @@ main(int argc, char *argv[])
 
   exit(0);
 }
+
+참고하는 코드 
 */
 #include "kernel/types.h"
 #include "kernel/stat.h"
-#include "kernel/proc.h"
+#include "kernel/fs.h"
 #include "user/user.h"
 
 // namei() 함수 조사 필요.
+// namei() 함수는 
 
 void
 pwd(void) {
-  // pwd() 함수가 작동하는 로직
-  // 디렉터리의 주소를 구한다
+  // pwd() 함수가 작동하는 로직 :
+  // 디렉터리의 경로를 구한다( /(root)에서부터 나의 현재 디렉터리까지 반복문을 돌린다.)
+  // ex 나의 경로가 /home/test라면
+  // /(root) home(Subdirectories) / test(Subdirectories)
+  // root에서부터       -------------->     MyDirectory까지
+  // 참고해야 하는 파일(user/ls.c ; kernel/fs.h)
+  // ls.c(ls 명령어)는 현재 디렉터리에 있는 하위 디렉터리를 리스트로 출력한다.
+  // fs.h(filesystem 헤더파일)
 }
 
 int main(int argc, char **argv) {

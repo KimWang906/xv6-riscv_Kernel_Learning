@@ -10,11 +10,13 @@ fmtname(char *path)
   char *p;
 
   // Find first character after last slash.
+  // 마지막 슬래시 뒤에 있는 첫 번째 문자를 찾습니다.
   for(p=path+strlen(path); p >= path && *p != '/'; p--)
     ;
   p++;
 
   // Return blank-padded name.
+  // 빈 패드로 이름을 반환합니다.
   if(strlen(p) >= DIRSIZ)
     return p;
   memmove(buf, p, strlen(p));
@@ -75,9 +77,9 @@ main(int argc, char *argv[])
 {
   int i;
 
-  if(argc < 2){
-    ls(".");
-    exit(0);
+  if(argc < 2) {  // ex) ls만 사용할 경우 main함수에 들어오는 인자의 개수가 하나밖에 없으므로 해당 조건문으로 검사합니다.
+    ls("."); // 만약 인수가 없을 경우, 현재 디렉터리에 있는 하위 파일 및 디렉터리를 출력합니다.
+    exit(0); // 프로세스를 종료하여 아래 코드는 더 이상 작동하지 않습니다.
   }
   for(i=1; i<argc; i++)
     ls(argv[i]);
