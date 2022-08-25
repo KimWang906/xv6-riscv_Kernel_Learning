@@ -388,14 +388,30 @@ sys_mknod(void)
 }
 
 uint64
-sys_chdir(void)
+sys_chdir(void) // 디렉터리를 변경하는 시스템 콜
 {
-  char path[MAXPATH];
+  char path[MAXPATH]; // maximum file path name
   struct inode *ip;
-  struct proc *p = myproc();
+  struct proc *p = myproc(); // 구조체 포인터에 할당되어 있는 myproc() 함수(proc.c)
+  // 395번째 코드가 무엇을 뜻하는지 확실하게 알아서 올 것(질문)
   
-  begin_op();
+  begin_op(); // called at the start of each FS system call(log.c)
+
+  // argstr(int n, char *buf, int max) :
+  // Fetch the nth word-sized system call argument as a null-terminated string.
+  // Copies into buf, at most max.
+  // Returns string length if OK (including nul), -1 if error.
+  // 
+
+  // MAXPATH  128 --> maximum file path name
+  //                  최대 이름의 길이
+
+  // The fundamental job of “namei” algorithm is to convert a given path name to the corresponding inode number.
+  // namei 알고리즘의 기본 작업은 주어진 경로 이름을 대응하는 inode 번호로 변환하는 것입니다.
+
   if(argstr(0, path, MAXPATH) < 0 || (ip = namei(path)) == 0){
+    // called at the end of each FS system call.
+    // commits if this was the last outstanding operation.
     end_op();
     return -1;
   }
@@ -410,6 +426,11 @@ sys_chdir(void)
   end_op();
   p->cwd = ip;
   return 0;
+}
+uint64
+sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
+{
+
 }
 
 uint64

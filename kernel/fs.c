@@ -253,7 +253,7 @@ iget(uint dev, uint inum)
       ip->ref++;
       release(&itable.lock);
       return ip;
-    }
+    } 
     if(empty == 0 && ip->ref == 0)    // Remember empty slot.
       empty = ip;
   }
