@@ -394,7 +394,7 @@ sys_chdir(void) // 디렉터리를 변경하는 시스템 콜
   struct inode *ip;
   struct proc *p = myproc(); // 구조체 포인터에 할당되어 있는 myproc() 함수(proc.c)
   // 395번째 코드가 무엇을 뜻하는지 확실하게 알아서 올 것(질문)
-  
+
   begin_op(); // called at the start of each FS system call(log.c)
 
   // argstr(int n, char *buf, int max) :
@@ -413,8 +413,9 @@ sys_chdir(void) // 디렉터리를 변경하는 시스템 콜
     // called at the end of each FS system call.
     // commits if this was the last outstanding operation.
     end_op();
-    return -1;
+    return -1; // return error
   }
+  // ilock(struct inode*)
   ilock(ip);
   if(ip->type != T_DIR){
     iunlockput(ip);
@@ -422,11 +423,20 @@ sys_chdir(void) // 디렉터리를 변경하는 시스템 콜
     return -1;
   }
   iunlock(ip);
+  // iput(struct inode*)
+  // Drop a reference to an in-memory inode.
+  // If that was the last reference, the inode table entry can
+  // be recycled.
+  // If that was the last reference and the inode has no links
+  // to it, free the inode (and its content) on disk.
+  // All calls to iput() must be inside a transaction in
+  // case it has to free the inode.
   iput(p->cwd);
   end_op();
   p->cwd = ip;
   return 0;
 }
+
 uint64
 sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
 {
