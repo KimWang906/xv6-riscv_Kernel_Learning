@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug 27 18:59:06 2022
+# Make data base, printed on Sun Aug 28 18:55:12 2022
 
 # Variables
 
@@ -69,7 +69,7 @@ VSCODE_CODE_CACHE_PATH = /home/kimwang0906/.config/Code/CachedData/e4503b30fc782
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.94VRR1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.LNWHR1
 # default
 .LOADED := 
 # default
@@ -103,13 +103,13 @@ MAKEFILE_LIST := Makefile kernel/bio.d kernel/console.d kernel/exec.d kernel/fil
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 92360
+VSCODE_PID = 7437
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/4988,unix/KimWang09:/tmp/.ICE-unix/4988
+SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/4317,unix/KimWang09:/tmp/.ICE-unix/4317
 # automatic
 *F = $(notdir $*)
 # environment
@@ -163,7 +163,7 @@ LC_MONETARY = ko_KR.UTF-8
 # environment
 LC_TIME = ko_KR.UTF-8
 # environment
-INVOCATION_ID = 50210d8195af48bebd4cca6eeea22543
+INVOCATION_ID = 67f3a81255c244f5a85802011b2032a8
 # environment
 USERNAME = kimwang0906
 # environment
@@ -201,7 +201,7 @@ PLATFORMIO_PATH = /home/kimwang0906/.platformio/python3/bin:/home/kimwang0906/.c
 # makefile
 .DEFAULT_GOAL := kernel/kernel
 # environment
-SYSTEMD_EXEC_PID = 5011
+SYSTEMD_EXEC_PID = 4335
 # makefile (from 'Makefile', line 51)
 QEMU = qemu-system-riscv64
 # environment
@@ -217,11 +217,11 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 74)
 LDFLAGS = -z max-page-size=4096
 # environment
-MANAGERPID = 4881
+MANAGERPID = 4170
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 92360
+GIO_LAUNCHED_DESKTOP_FILE_PID = 7437
 # environment
 _ = /usr/share/code/code
 # environment
@@ -231,7 +231,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 68)
 CFLAGS = -Wall -Werror -O -fno-omit-frame-pointer -ggdb -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. $(shell $(CC) -fno-stack-protector -E -x c /dev/null >/dev/null 2>&1 && echo -fno-stack-protector) -fno-pie -no-pie
 # environment
-JOURNAL_STREAM = 8:28108
+JOURNAL_STREAM = 8:37713
 # makefile (from 'Makefile', line 158)
 CPUS := 3
 # environment
@@ -286,9 +286,9 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 
 # Directories
 
-# kernel (device 2081, inode 40371865): 102 files, no impossibilities.
-# . (device 2081, inode 38145921): 23 files, no impossibilities.
-# user (device 2081, inode 40371921): 129 files, no impossibilities.
+# kernel (device 2049, inode 40371865): 102 files, no impossibilities.
+# . (device 2049, inode 38145921): 23 files, no impossibilities.
+# user (device 2049, inode 40371921): 129 files, no impossibilities.
 
 # 254 files, no impossibilities in 3 directories.
 
@@ -515,7 +515,6 @@ kernel/uart.c:
 # Not a target:
 user/forktest.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-24 18:35:23.165402797
 #  File has been updated.
 #  Successfully updated.
@@ -565,6 +564,7 @@ user/initcode: user/initcode.S
 
 .PRECIOUS: %.o
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -807,7 +807,6 @@ user/rm.o: user/rm.c kernel/types.h kernel/stat.h user/user.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 user/pwd.o: user/pwd.c kernel/types.h kernel/stat.h kernel/fs.h user/user.h
 #  Implicit rule search has not been done.
@@ -858,6 +857,7 @@ user/clear.c:
 
 # Not a target:
 kernel/types.h:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -948,7 +948,6 @@ kernel/kalloc.d:
 #  Implicit rule search has been done.
 #  Last modified 2022-08-24 18:26:55.500369586
 #  File has been updated.
- 
 #  Successfully updated.
 
 # Not a target:
@@ -1149,6 +1148,7 @@ kernel/syscall.o: kernel/syscall.c kernel/types.h kernel/param.h kernel/memlayou
 #  File has not been updated.
 
 # Not a target:
+ 
 /usr/lib/gcc/riscv64-unknown-elf/10.2.0/include/stdarg.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -1242,7 +1242,6 @@ kernel/plic.d:
 # Not a target:
 user/printf.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-24 18:35:23.073406883
 #  File has been updated.
 #  Successfully updated.
@@ -1437,6 +1436,7 @@ user/mkdir.d:
 # Not a target:
 kernel/console.d:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-08-24 18:26:55.408366743
 #  File has been updated.
 #  Successfully updated.
@@ -1475,7 +1475,6 @@ kernel/sleeplock.h:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 tags: kernel/entry.o kernel/start.o kernel/console.o kernel/printf.o kernel/uart.o kernel/kalloc.o kernel/spinlock.o kernel/string.o kernel/main.o kernel/vm.o kernel/proc.o kernel/swtch.o kernel/trampoline.o kernel/trap.o kernel/syscall.o kernel/sysproc.o kernel/bio.o kernel/fs.o kernel/log.o kernel/sleeplock.o kernel/file.o kernel/pipe.o kernel/exec.o kernel/sysfile.o kernel/kernelvec.o kernel/plic.o kernel/virtio_disk.o _init
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -1551,6 +1550,6 @@ kernel/file.o: kernel/file.c kernel/types.h kernel/riscv.h kernel/defs.h kernel/
 # strcache performance: lookups = 897 / hit rate = 50%
 # hash-table stats:
 # Load=445/8192=5%, Rehash=0, Collisions=24/897=3%
-# Finished Make data base on Sat Aug 27 18:59:06 2022
+# Finished Make data base on Sun Aug 28 18:55:12 2022
 
  
