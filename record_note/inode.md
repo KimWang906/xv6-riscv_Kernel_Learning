@@ -13,17 +13,17 @@ inode 디스크 구조에는 메타데이터가 포함되어 있습니다.
 여러 프로세스에서 사용하는 inode로 이동합니다.
 in-memory 아이노드는 디스크에 저장되지 않은 부기 정보(ip->ref 및 ip->valid)를 포함합니다.  
   
-아이노드와 그 메모리 내 표현은 File System Code의 나머지 부분에서 사용될 수 있기 전에 일련의 상태를 거칩니다.
-
+아이노드와 그 메모리 내 표현은 File System Code의 나머지 부분에서 사용될 수 있기 전에 일련의 상태를 거칩니다.  
+  
 * Allocation: (디스크에서) 유형이 제로가 아닌 경우 아이노드가 할당됩니다.  
 ialloc는 할당하고, 참조 및 링크 수가 0으로 떨어지면 iput()은 비워집니다.  
   
-* Referencing in table: ip->ref가 0일 경우 inode 표의 항목은 무료입니다.
+* Referencing in table: ip->ref가 0일 경우 inode 표의 항목은 무료입니다.  
   그렇지 않으면 ip->ref는 엔트리에 대한 메모리 내 포인터 수(열린 파일 및 현재 디렉터리)를 추적합니다.  
   iget()은 테이블 항목을 찾거나 만들고 참조를 증가시키며, iput()은 참조를 감소시킵니다.  
   
 * Valid: 아이노드 테이블 항목의 정보(type, size, &c)는 ip->valid가 1인 경우에만 정확합니다.  
-  ilock은 아이노드를 읽습니다.  
+  ilock()은 아이노드를 읽습니다.  
  디스크가 ip->valid를 설정하고 iput는 ip->ref가 0으로 떨어지면 ip->valid를 지웁니다.  
   
 * Locked: File System Code는 처음 아이노드를 잠근 경우에만 아이노드와 그 내용을 검사하고 수정할 수 있습니다.  
