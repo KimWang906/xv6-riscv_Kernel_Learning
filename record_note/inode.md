@@ -15,7 +15,7 @@
   
 **inode**와 그 메모리 내 표현은 **File System Code**의 나머지 부분에서 사용될 수 있기 전에 일련의 상태를 거칩니다.  
   
-* **Allocation**: (디스크에서) type이 0이 아닌 경우 **inode**가 할당됩니다.  
+* **Allocation**: (디스크에서) **Type**이 0이 아닌 경우 **inode**가 할당됩니다.  
 **ialloc()** 는 할당하고, 참조 및 링크 수가 0으로 떨어지면 **iput()** 은 비워집니다.  
   
 * **Referencing in table**: **ip->ref**가 0일 경우 **inode** 표의 항목은 무료입니다.  
@@ -24,7 +24,7 @@
   
 * **Valid**: **inode** 테이블 항목의 정보(**type, size, &c**)는 **ip->valid**가 1인 경우에만 정확합니다.  
   **ilock()**은 **inode**를 읽습니다.  
- 디스크가 **ip->valid**를 설정하고 iput는 **ip->ref**가 0으로 떨어지면 **ip->valid**를 지웁니다.  
+ 디스크가 **ip->valid**를 설정하고 **iput()** 는 **ip->ref**가 0으로 떨어지면 **ip->valid**를 지웁니다.  
   
 * **Locked**: **File System Code**는 처음 **inode**를 잠근 경우에만 **inode**와 그 내용을 검사하고 수정할 수 있습니다.  
   
