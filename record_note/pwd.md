@@ -67,7 +67,7 @@ sys_chdir(void) // 디렉터리를 변경하는 시스템 콜
 
 코드 분석을 통해 chdir()의 정확한 로직을 알게 되었고 inode의 개념과 자료구조 Reference Counting에 대해 알게 되었습니다.
 
-## 유저에게 Directory를 알려주는 System Call인 sys_getcwd() 함수 만들기
+## [유저에게 Directory를 알려주는 System Call인 sys_getcwd() 함수 만들기](https://man7.org/linux/man-pages/man3/getcwd.3.html)
 
 // getcwd(char* buf, size(수정 예정))
 // return: 호출이 성공하면 buf의 포인터를 반환하고, 실패할 경우 NULL을 반환합니다.
