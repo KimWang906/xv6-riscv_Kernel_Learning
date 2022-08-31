@@ -97,3 +97,23 @@ sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
   return 0; // <-- 반환 시 return하는 값을 변경해야합니다.(Coding 중...)
 }
 ```
+
+### 참고 자료
+
+[System Call - 디렉터리 다루기](https://velog.io/@jyong0719/%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%8B%A4%EB%A3%A8%EA%B8%B0)
+
+[man7 - getcwd()](https://man7.org/linux/man-pages/man3/getcwd.3.html)
+
+[운영체제 - 시스템 콜](https://chul2-ing.tistory.com/39)
+
+[포인터 함수, 함수 포인터의 차이점](https://visualguide.org/ko/c-%ED%8F%AC%EC%9D%B8%ED%84%B0%EC%97%90-%EB%8C%80%ED%95%9C-%ED%8F%AC%EC%9D%B8%ED%84%B0-%ED%95%A8%EC%88%98%EC%97%90-%EB%8C%80%ED%95%9C-%ED%8F%AC%EC%9D%B8%ED%84%B0-%EC%98%88%EC%A0%9C%EC%99%80-%ED%95%A8)
+
+[참조 횟수 계산 방식](https://ko.wikipedia.org/wiki/%EC%B0%B8%EC%A1%B0_%ED%9A%9F%EC%88%98_%EA%B3%84%EC%82%B0_%EB%B0%A9%EC%8B%9D)
+
+[OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/Korean/)
+
+[System Call - getcwd()](https://www.it-note.kr/209)
+
+[namei() function](https://www.quora.com/Linux-Kernel-How-do-the-path-look-up-mechanism-namei-work-in-Linux)
+
+#### 저에게 도움을 주신 모든 분들께 항상 감사합니다
