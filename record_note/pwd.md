@@ -69,9 +69,9 @@ sys_chdir(void) // 디렉터리를 변경하는 시스템 콜
 
 ## [유저에게 Directory를 알려주는 System Call인 sys_getcwd() 함수 만들기](https://man7.org/linux/man-pages/man3/getcwd.3.html)
 
-// getcwd(char* buf, size(수정 예정))
-// return: 호출이 성공하면 buf의 포인터를 반환하고, 실패할 경우 NULL을 반환합니다.
-
+// getcwd(char* buf, size)  
+// return: 호출이 성공하면 buf의 포인터를 반환하고, 실패할 경우 NULL을 반환합니다.  
+  
 ```code
 uint64
 sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
@@ -116,4 +116,4 @@ sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
 
 [namei() function](https://www.quora.com/Linux-Kernel-How-do-the-path-look-up-mechanism-namei-work-in-Linux)
 
-#### 저에게 도움을 주신 모든 분들께 항상 감사합니다
+## 저에게 도움을 주신 모든 분들께 항상 감사합니다
