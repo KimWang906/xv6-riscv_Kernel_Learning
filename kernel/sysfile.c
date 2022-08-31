@@ -449,6 +449,7 @@ sys_chdir(void) // 디렉터리를 변경하는 시스템 콜
 }
 
 // getcwd(char* buf, size)
+// return: 호출이 성공하면 buf의 포인터를 반환하고, 실패할 경우 NULL을 반환합니다.
 uint64
 sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
 {
@@ -456,8 +457,7 @@ sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
   //                  최대 이름의 길이
   char path[MAXPATH]; // maximum file path name
   struct inode *ip;
-  struct proc *p = myproc(); // 구조체 포인터에 할당되어 있는 myproc() 함수(proc.c)
-  // 395번째 코드가 무엇을 뜻하는지 확실하게 알아서 올 것(질문)
+  struct buf *bp; // buffer pointer bp
 
   begin_op(); // FS system call이 시작될 때 이 함수가 호출됩니다.
 
