@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 31 11:29:08 2022
+# Make data base, printed on Thu Sep  1 14:23:51 2022
 
 # Variables
 
@@ -69,7 +69,7 @@ VSCODE_CODE_CACHE_PATH = /home/kimwang0906/.config/Code/CachedData/e4503b30fc782
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.KV7PR1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.75NTR1
 # default
 .LOADED := 
 # default
@@ -103,13 +103,13 @@ MAKEFILE_LIST := Makefile kernel/bio.d kernel/console.d kernel/exec.d kernel/fil
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 9834
+VSCODE_PID = 8702
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/3891,unix/KimWang09:/tmp/.ICE-unix/3891
+SESSION_MANAGER = local/KimWang09:@/tmp/.ICE-unix/6880,unix/KimWang09:/tmp/.ICE-unix/6880
 # automatic
 *F = $(notdir $*)
 # environment
@@ -163,7 +163,7 @@ LC_MONETARY = ko_KR.UTF-8
 # environment
 LC_TIME = ko_KR.UTF-8
 # environment
-INVOCATION_ID = 8ea2ee7d2d3e4bdcb3e98fbf6822dd06
+INVOCATION_ID = cdd1446450df4beea27a4c03925c755f
 # environment
 USERNAME = kimwang0906
 # environment
@@ -197,11 +197,11 @@ LOGNAME = kimwang0906
 # environment
 GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
-PLATFORMIO_PATH = /home/kimwang0906/.platformio/python3/bin:/home/kimwang0906/.poetry/bin:/home/kimwang0906/.local/bin:/home/kimwang0906/.poetry/bin:/home/kimwang0906/.cargo/bin:/home/kimwang0906/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/lib/jvm/java-11-openjdk-amd64/bin
+PLATFORMIO_PATH = /home/kimwang0906/.platformio/penv/bin:/home/kimwang0906/.platformio/penv:/home/kimwang0906/.platformio/python3/bin:/home/kimwang0906/.poetry/bin:/home/kimwang0906/.local/bin:/home/kimwang0906/.poetry/bin:/home/kimwang0906/.cargo/bin:/home/kimwang0906/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/lib/jvm/java-11-openjdk-amd64/bin
 # makefile
 .DEFAULT_GOAL := kernel/kernel
 # environment
-SYSTEMD_EXEC_PID = 3909
+SYSTEMD_EXEC_PID = 6918
 # makefile (from 'Makefile', line 51)
 QEMU = qemu-system-riscv64
 # environment
@@ -217,11 +217,11 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 74)
 LDFLAGS = -z max-page-size=4096
 # environment
-MANAGERPID = 3744
+MANAGERPID = 6751
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 9834
+GIO_LAUNCHED_DESKTOP_FILE_PID = 8702
 # environment
 _ = /usr/share/code/code
 # environment
@@ -231,7 +231,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 68)
 CFLAGS = -Wall -Werror -O -fno-omit-frame-pointer -ggdb -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. $(shell $(CC) -fno-stack-protector -E -x c /dev/null >/dev/null 2>&1 && echo -fno-stack-protector) -fno-pie -no-pie
 # environment
-JOURNAL_STREAM = 8:34614
+JOURNAL_STREAM = 8:46144
 # makefile (from 'Makefile', line 158)
 CPUS := 3
 # environment
@@ -287,13 +287,13 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 
 # kernel (device 2049, inode 40371865): 102 files, no impossibilities.
 # . (device 2049, inode 38145921): 23 files, no impossibilities.
- 
 # user (device 2049, inode 40371921): 129 files, no impossibilities.
 
 # 254 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
+ 
 _%: %.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
 #  recipe to execute (from 'Makefile', line 93):
 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $@ $^
@@ -570,6 +570,7 @@ user/initcode: user/initcode.S
 # Not a target:
 _init:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -628,7 +629,6 @@ user/kill.d:
 kernel/log.d:
 #  Implicit rule search has been done.
 #  Last modified 2022-08-24 18:34:48.239060331
- 
 #  File has been updated.
 #  Successfully updated.
 
@@ -852,6 +852,7 @@ kernel/string.d:
 # Not a target:
 user/clear.c:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -938,7 +939,6 @@ kernel/kalloc.o: kernel/kalloc.c kernel/types.h kernel/param.h kernel/memlayout.
 # Not a target:
 user/usys.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-25 22:09:47.802934785
 #  File has been updated.
 #  Successfully updated.
@@ -1180,6 +1180,7 @@ user/_cat:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 kernel/sleeplock.o: kernel/sleeplock.c kernel/types.h kernel/riscv.h kernel/defs.h kernel/param.h kernel/memlayout.h kernel/spinlock.h kernel/proc.h kernel/sleeplock.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -1227,7 +1228,6 @@ user/_wc:
 # Not a target:
 user/initcode.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-07-26 15:28:13.668102617
 #  File has been updated.
 #  Successfully updated.
@@ -1356,7 +1356,6 @@ kernel/syscall.c:
 # Not a target:
 user/printf.c:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -1450,7 +1449,6 @@ kernel/memlayout.h:
 # Not a target:
 user/pwd.c:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -1471,6 +1469,7 @@ user/_forktest: user/forktest.o user/ulib.o user/usys.o user/printf.o user/umall
 	$(OBJDUMP) -S $U/_forktest > $U/forktest.asm
 
 # Not a target:
+ 
 kernel/sleeplock.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -1509,7 +1508,6 @@ kernel/sysproc.c:
 # Not a target:
 kernel/main.d:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-24 18:34:47.699087672
 #  File has been updated.
 #  Successfully updated.
@@ -1548,11 +1546,10 @@ kernel/file.o: kernel/file.c kernel/types.h kernel/riscv.h kernel/defs.h kernel/
 
 # strcache buffers: 1 (0) / strings = 445 / storage = 4845 B / avg = 10 B
 # current buf: size = 8162 B / used = 4845 B / count = 445 / avg = 10 B
- 
 
 # strcache performance: lookups = 897 / hit rate = 50%
 # hash-table stats:
 # Load=445/8192=5%, Rehash=0, Collisions=24/897=3%
-# Finished Make data base on Wed Aug 31 11:29:08 2022
+# Finished Make data base on Thu Sep  1 14:23:51 2022
 
  

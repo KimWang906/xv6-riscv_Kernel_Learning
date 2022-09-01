@@ -455,20 +455,13 @@ sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
 {
   // MAXPATH  128 --> maximum file path name
   //                  최대 이름의 길이
+  // getcwd(path <-- Reference, MAXPATH <-- Array length)
   char path[MAXPATH]; // maximum file path name
-  struct inode *ip;
-  struct buf *bp; // buffer pointer bp
+  char *pPath = '\0'; // path pointer
 
   begin_op(); // FS system call이 시작될 때 이 함수가 호출됩니다.
 
-  if(argstr(0, path, MAXPATH) < 0 || (ip = namei(path)) == 0){ // 이름이 최대 길이를 초과할 경우
-    // called at the end of each FS system call.
-    // commits if this was the last outstanding operation.
-    // 각 FS System Call이 끝날 때 호출됩니다.
-    // 이 작업이 마지막 처리되지 않은 작업인지 여부를 commit합니다.
-    end_op();
-    return -1; // return error
-  }
+  malloc(path, sizeof(path));
 
   end_op(); // FS system call이 끝날 때 이 함수가 호출됩니다.
   return 0;

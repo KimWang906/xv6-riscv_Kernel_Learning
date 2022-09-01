@@ -14,7 +14,7 @@ ACKNOWLEDGMENTS
 
 xv6 is inspired by John Lions's Commentary on UNIX 6th Edition (Peer
 to Peer Communications; ISBN: 1-57398-013-7; 1st edition (June 14,
-2000)). See also https://pdos.csail.mit.edu/6.828/, which
+2000)). See also [Link](https://pdos.csail.mit.edu/6.828/), which
 provides pointers to on-line resources for v6.
 
 The following people have made contributions: Russ Cox (context switching,
