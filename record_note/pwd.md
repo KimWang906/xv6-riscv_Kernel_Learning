@@ -3,12 +3,11 @@
 ## Request
 
 [getcwd(2)](https://github.com/torvalds/linux/blob/dcf8e5633e2e69ad60b730ab5905608b756a032f/fs/d_path.c#L412)  
-이게 진짜 시스템콜임.  
+이게 진짜 시스템콜이고  
   
-* 현재 디렉토리 위치 리턴해주는 함수  
-* 코드를 보시면 아실 수 있으시겠지만 여기엔 buf가 NULL이라고 자동으로 동적할당하는 기능이 아예 하지 않음
-* 디렉토리 이름이 너무 길경우 에러 ENAMETOOLONG 를 반환하면서 실패함  
-* 이 외에도 여러모로 유저가 직접 호출하기엔 불편한 인터페이스의 시스템콜임  
+* 현재 디렉토리 위치 리턴해주는 함수이고  코드를 보시면 아실 수 있으시겠지만 여기엔 buf가 NULL이라고 자동으로 동적할당하는 기능이 아예 하지 않습니다.
+* 디렉토리 이름이 너무 길경우 에러 ENAMETOOLONG 를 반환하면서 실패합니다.
+* 이 외에도 여러모로 유저가 직접 호출하기엔 불편한 인터페이스의 시스템 콜입니다.
   
 [getcwd(3)](https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/getcwd.c)  
   
