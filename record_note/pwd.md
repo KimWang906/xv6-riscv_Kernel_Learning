@@ -1,8 +1,24 @@
 # PWD 명령어 만들어가며 쓰는 일지
 
+## Linux man7 page
+
+man7 페이지를 보는 법
+
+    The standard sections of the manual include:
+
+    1. User Commands
+    2. System Calls
+    3. C Library Functions
+    4. Devices and Special Files
+    5. File Formats and Conventions
+    6. Games et. al.
+    7. Miscellanea
+    8. System Administration tools and Daemons
+
 ## Request
 
 [getcwd(2)](https://github.com/torvalds/linux/blob/dcf8e5633e2e69ad60b730ab5905608b756a032f/fs/d_path.c#L412)  
+  
 이게 진짜 시스템콜이고  
   
 * 현재 디렉토리 위치 리턴해주는 함수이고  코드를 보시면 아실 수 있으시겠지만 여기엔 buf가 NULL이라고 자동으로 동적할당하는 기능이 아예 하지 않습니다.
@@ -16,9 +32,15 @@
 * buf가 NULL이면 커널에 넘기기 전에 자동으로 유저레벨에서 malloc(3)을 호출해서, 버퍼를 만든다음 getcwd(2) 에 넘겨주기 때문에 유저가 쓰기엔 좀 더 편합니다.
 * 디렉토리 이름이 너무 길어서 getcwd(2)가 실패하면, 현재 디렉토리의 부모 디렉토리 이름을 하나하나 fstat lstat으로 얻어온 다음 그 부모 디렉토리 이름을 모두 연결하면서 리턴함 (;;) 느리긴 하겠지만 아무튼 이러면 유저는 에러 없이 편하게 현재 디렉토리의 위치를 무조건 받아올 수 있습니다.
 
+## 목표
+
+1. **getcwd(2)** 구현하기  
+2. **malloc(3), free(3)** 구현하기  
+3. **getcwd(3)** 구현하기  
+
 ## Directory를 지정해주는 sys_chdir()
 
-```code
+```c
 uint64
 sys_chdir(void) // 디렉터리를 변경하는 함수
 {
@@ -113,21 +135,6 @@ sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
   return 0; // <-- 반환 시 return하는 값을 변경해야합니다.(Coding 중...)
 }
 ```
-
-## Linux man7 page
-
-man7 페이지를 보는 법
-
-    The standard sections of the manual include:
-
-    1. User Commands
-    2. System Calls
-    3. C Library Functions
-    4. Devices and Special Files
-    5. File Formats and Conventions
-    6. Games et. al.
-    7. Miscellanea
-    8. System Administration tools and Daemons
 
 ### 참고 자료
 
