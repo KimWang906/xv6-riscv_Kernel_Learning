@@ -2,21 +2,20 @@
 
 ## Request
 
-getcwd(2)
-https://github.com/torvalds/linux/blob/dcf8e5633e2e69ad60b730ab5905608b756a032f/fs/d_path.c#L412
-이게 진짜 시스템콜임.
-
+[getcwd(2)](https://github.com/torvalds/linux/blob/dcf8e5633e2e69ad60b730ab5905608b756a032f/fs/d_path.c#L412)  
+이게 진짜 시스템콜임.  
+  
 * 현재 디렉토리 위치 리턴해주는 함수  
 * 코드를 보시면 아실 수 있으시겠지만 여기엔 buf가 NULL이라고 자동으로 동적할당하는 기능이 아예 하지 않음
 * 디렉토리 이름이 너무 길경우 에러 ENAMETOOLONG 를 반환하면서 실패함  
 * 이 외에도 여러모로 유저가 직접 호출하기엔 불편한 인터페이스의 시스템콜임  
-
-getcwd(3)
-https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/getcwd.c
-- __getcwd_generic 라는 이름으로 정의한다음 #define getcwd __getcwd_generic 이런걸 해서 유저가 자동으로 getcwd함수를 부르면 __getcwd_generic 함수가 대신 호출되도록 조작해놨음.
-- 얘가 내부적으로 진짜 getcwd(2)를 호출함
-- buf가 NULL이면 커널에 넘기기 전에 자동으로 유저레벨에서 malloc(3)을 호출해서, 버퍼를 만든다음 getcwd(2) 에 넘겨줌. 그래서 유저가 쓰기엔 좀 더 편함
-- 디렉토리 이름이 너무 길어서 getcwd(2)가 실패하면, 현재 디렉토리의 부모 디렉토리 이름을 하나하나 fstat lstat으로 얻어온 다음 그 부모 디렉토리 이름을 모두 연결하면서 리턴함 (;;) 느리긴 하겠지만 아무튼 이러면 유저는 에러 없이 편하게 현재 디렉토리의 위치를 무조건 받아올 수 있음
+  
+[getcwd(3)](https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/getcwd.c)  
+  
+* getcwd_generic 라는 이름으로 정의한다음 #define getcwd getcwd_generic 이런걸 해서 유저가 자동으로 getcwd함수를 부르면 __getcwd_generic 함수가 대신 호출되도록 조작해놨습니다.
+* 얘가 내부적으로 진짜 getcwd(2)를 호출합니다.
+* buf가 NULL이면 커널에 넘기기 전에 자동으로 유저레벨에서 malloc(3)을 호출해서, 버퍼를 만든다음 getcwd(2) 에 넘겨주기 때문에 유저가 쓰기엔 좀 더 편합니다.
+* 디렉토리 이름이 너무 길어서 getcwd(2)가 실패하면, 현재 디렉토리의 부모 디렉토리 이름을 하나하나 fstat lstat으로 얻어온 다음 그 부모 디렉토리 이름을 모두 연결하면서 리턴함 (;;) 느리긴 하겠지만 아무튼 이러면 유저는 에러 없이 편하게 현재 디렉토리의 위치를 무조건 받아올 수 있습니다.
 
 ## Directory를 지정해주는 sys_chdir()
 
