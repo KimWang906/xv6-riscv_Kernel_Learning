@@ -1,4 +1,10 @@
-# Record
+# Commit 규칙
+
+* **update (file name)** : 내가 정리하고 있는 내용(md)의 업데이트
+* **incomplete code (file name), (code)** : 완성되지 않은 코드
+* **complete code (file name), (code)** : 완성된 코드
+
+## Record
 
 [Record Note](/record_note/record.md)
 
