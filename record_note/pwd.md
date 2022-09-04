@@ -109,32 +109,48 @@ sys_chdir(void) // 디렉터리를 변경하는 함수
 
 ## [유저에게 Directory를 알려주는 sys_getcwd() 함수 만들기](https://man7.org/linux/man-pages/man3/getcwd.3.html)
 
-// getcwd(char* buf, size)  
-// return: 호출이 성공하면 buf의 포인터를 반환하고, 실패할 경우 NULL을 반환합니다.  
+<!-- // getcwd(char* buf, size)  
+// return: 호출이 성공하면 buf의 포인터를 반환하고, 실패할 경우 NULL을 반환합니다.   -->
 
 ```c
-uint64
-sys_getcwd(void) // 디렉터리의 현재 주소를 알려주는 시스템 콜
+// 내일은 Linux getcwd() 관련 함수를 분석할 예정.
+SYSCALL_DEFINE2(getcwd, char __user *, buf, unsigned long, size)
 {
-  // MAXPATH  128 --> maximum file path name
-  //                  최대 이름의 길이
-  char path[MAXPATH]; // maximum file path name
-  struct inode *ip;
-  struct buf *bp; // buffer pointer bp
+    int error;
+    struct path pwd, root;
+    char *page = __getname();
 
-  begin_op(); // FS system call이 시작될 때 이 함수가 호출됩니다.
+    if (!page)
+    return -ENOMEM;
 
-  if(argstr(0, path, MAXPATH) < 0 || (ip = namei(path)) == 0){ // 이름이 최대 길이를 초과할 경우
-    // called at the end of each FS system call.
-    // commits if this was the last outstanding operation.
-    // 각 FS System Call이 끝날 때 호출됩니다.
-    // 이 작업이 마지막 처리되지 않은 작업인지 여부를 commit합니다.
-    end_op();
-    return -1; // return error
-  }
+    rcu_read_lock();
+    get_fs_root_and_pwd_rcu(current->fs, &root, &pwd);
 
-  end_op(); // FS system call이 끝날 때 이 함수가 호출됩니다.
-  return 0; // <-- 반환 시 return하는 값을 변경해야합니다.(Coding 중...)
+    if (unlikely(d_unlinked(pwd.dentry))) {
+        rcu_read_unlock();
+        error = -ENOENT;
+    } else {
+        unsigned len;
+        DECLARE_BUFFER(b, page, PATH_MAX);
+
+        prepend_char(&b, 0);
+        if (unlikely(prepend_path(&pwd, &root, &b) > 0))
+            prepend(&b, "(unreachable)", 13);
+        rcu_read_unlock();
+
+        len = PATH_MAX - b.len;
+        if (unlikely(len > PATH_MAX))
+            error = -ENAMETOOLONG;
+        else if (unlikely(len > size))
+            error = -ERANGE;
+        else if (copy_to_user(buf, b.buf, len))
+            error = -EFAULT;
+        else
+            error = len;
+    }
+    __putname(page);
+
+    return error;
 }
 ```
 
