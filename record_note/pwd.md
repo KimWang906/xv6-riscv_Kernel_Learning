@@ -123,7 +123,25 @@ SYSCALL_DEFINE2(getcwd, char __user *, buf, unsigned long, size)
     if (!page)
     return -ENOMEM;
 
-    rcu_read_lock();
+// RCU : Read Copy Update
+// RCU 구현시 필요한 자료구조(리스트)를 초기화 해줍니다.
+
+/*
+RCU(Read Copy Update)는 읽는 작업이 주로 이루어지는 자료구조를 보호하기 위한 또 하나의 동기화 기법입니다.
+다른 동기화 방법과는 다르게 락이나 카운터를 사용하지 않습니다.
+이것은 캐시 라인의 스누핑이나 무효 값으로 인해 과부하를 발생시키는 "읽기/쓰기 스핀 락"이나 seqlocks에 비해 굉장히 유리합니다.
+
+rcu_read_lock()
+RCU에서 데이터를 참조하기 위한 Critical Section을 시작 했다는 것을 알립니다.
+preempt_disable() - CPU간의 선점을 방지합니다.
+__acquire(RCU) - 읽기을 위한 잠금 권한을 획득합니다. 
+읽는 것은 다수의 스레드에서 접근이 가능하므로 다른 CPU에서 rcu_read_lock() 함수를 이용하여 중첩해서 사용이 가능합니다.
+
+rcu_read_unlock()
+RCU에서 데이터의 참조가 끝난것을 통지합니다.
+__release(RCU) - __acquire()에서 획득한 잠금을 해제합니다.
+*/
+    rcu_read_lock(); 
     get_fs_root_and_pwd_rcu(current->fs, &root, &pwd);
 
     if (unlikely(d_unlinked(pwd.dentry))) {
@@ -140,6 +158,7 @@ SYSCALL_DEFINE2(getcwd, char __user *, buf, unsigned long, size)
 
         len = PATH_MAX - b.len;
         if (unlikely(len > PATH_MAX))
+        // 디렉토리 이름이 너무 길경우 에러 'ENAMETOOLONG' 를 반환하면서 실패합니다
             error = -ENAMETOOLONG;
         else if (unlikely(len > size))
             error = -ERANGE;
